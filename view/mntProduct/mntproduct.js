@@ -1,6 +1,10 @@
 var table;
 
-function init() {}
+function init(){
+  $("#productForm").on("submit",function(e){
+    editSaveProduct(e);
+  });
+}
 
 $(document).ready(function () {
   table = $("#tableProducts")
@@ -51,3 +55,70 @@ $(document).ready(function () {
     })
     .DataTable();
 });
+
+function editSaveProduct(e){
+  e.preventDefault();
+  var formData = new FormData($("#productForm")[0]);
+
+  //Ayuda a verificar cuales datos captura la variable formData
+  for(var valueData of formData.entries()){
+    console.log(valueData[0]+' - '+valueData[1]);
+  }
+
+  //console.log("Los datos de formData son: " + formData);
+
+  $.ajax({
+    url: "../../controller/product.php?op=editSaveProduct",
+    type: "POST",
+    data: formData,
+    contenType: false,
+    processData: false,
+    success: function(datos){
+      console.log(datos);
+      // $("#productForm")[0].reset();
+      // $("#modalmaintenance").modal('hide');
+      // $("#tableProducts").DataTable().ajax.reload();
+
+      // Swal.fire(
+      //   'Producto Creado',
+      //   'El producto se creó correctamente',
+      //   'success'
+      // )
+    }
+  });
+}
+
+function editProduct(prod_id){
+    console.log(prod_id)
+}
+
+function deleteProduct(prod_id){
+  Swal.fire({
+    title: 'Eliminar Producto',
+    text: '¿Desea eliminar el producto?',
+    icon: 'error',
+    showCancelButton: true,
+    confirmButtonText: 'Si',
+    cancelButtonText: 'No',
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.post("../../controller/product.php?op=deleteProduct",{prod_id:prod_id},function(data){});
+      $('#tableProducts').DataTable().ajax.reload();
+      // console.log(prod_id)
+      Swal.fire(
+        'Producto Eliminado',
+        'El producto se elimino correctamente',
+        'success'
+      )
+    }
+  })
+}
+
+$(document).on("click","#btnNewProduct", function(){
+  $('#mdlTitulo').html('Nuevo Producto')
+  $('#modalmaintenance').modal('show')
+});
+
+init();

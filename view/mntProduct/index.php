@@ -216,6 +216,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <!-- <h4 class="card-title">Heading With Background</h4> -->
+                                <button id="btnNewProduct" type="button" class="btn btn-outline-primary"
+                                    data-toggle="modal" data-target="#modalmaintenance">Nuevo
+                                    Producto</button>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -270,6 +273,8 @@
         Main wrapper end
     ***********************************-->
 
+    <?php require_once("mntmodal.php"); ?>
+
     <!--**********************************
         Scripts
     ***********************************-->
@@ -314,7 +319,10 @@
     <script src="../../public/vendor/datatables/Buttons/js/buttons.colVis.min.js"></script>
     <script src="../../public/vendor/datatables/jszip/dist/jszip.min.js"></script>
 
-    <script type="text/javascript" src="mntproduct.js"></script>
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type=" text/javascript" src="mntproduct.js"></script>
 
 </body>
 

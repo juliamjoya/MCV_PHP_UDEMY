@@ -37,7 +37,7 @@ class Product extends Connect{
     public function createProduct($prodName){
         $connect = parent::connection();
         parent::set_name();
-        $sql = "INSERT INTO tm_product (prod_id, prod_name, date_create, date_modif, date_dele, prod_status) VALUES (NULL, ?, now(), NULL, NULL, 1);";
+        $sql = "INSERT INTO tm_product (prod_id, prod_name, date_create, date_upd, date_dele, prod_status) VALUES (NULL, ?, now(), NULL, NULL, 1);";
         $sql = $connect->prepare($sql);
         $sql->bindValue(1,$prodName);
         $sql->execute();
