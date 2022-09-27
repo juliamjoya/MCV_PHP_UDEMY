@@ -61,9 +61,9 @@ function editSaveProduct(e){
   var formData = new FormData($("#productForm")[0]);
 
   //Ayuda a verificar cuales datos captura la variable formData
-  for(var valueData of formData.entries()){
-    console.log(valueData[0]+' - '+valueData[1]);
-  }
+  // for(var valueData of formData.entries()){
+  //   console.log(valueData[0]+' - '+valueData[1]);
+  // }
 
   //console.log("Los datos de formData son: " + formData);
 
@@ -71,19 +71,19 @@ function editSaveProduct(e){
     url: "../../controller/product.php?op=editSaveProduct",
     type: "POST",
     data: formData,
-    contenType: false,
+    contentType: false,
     processData: false,
     success: function(datos){
       console.log(datos);
-      // $("#productForm")[0].reset();
-      // $("#modalmaintenance").modal('hide');
-      // $("#tableProducts").DataTable().ajax.reload();
+      $("#productForm")[0].reset();
+      $("#modalmaintenance").modal('hide');
+      $("#tableProducts").DataTable().ajax.reload();
 
-      // Swal.fire(
-      //   'Producto Creado',
-      //   'El producto se creó correctamente',
-      //   'success'
-      // )
+      Swal.fire(
+        'Producto Creado',
+        'El producto se creó correctamente',
+        'success'
+      )
     }
   });
 }
