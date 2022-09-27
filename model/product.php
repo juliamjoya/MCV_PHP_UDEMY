@@ -34,28 +34,31 @@ class Product extends Connect{
         return $result = $sql->fetchAll();
     }
 
-    public function createProduct($prodName){
+    public function createProduct($prodName, $prodDesc){
         $connect = parent::connection();
         parent::set_name();
-        $sql = "INSERT INTO tm_product (prod_id, prod_name, date_create, date_upd, date_dele, prod_status) VALUES (NULL, ?, now(), NULL, NULL, 1);";
+        $sql = "INSERT INTO tm_product (prod_id, prod_name, prod_desc, date_create, date_upd, date_dele, prod_status) VALUES (NULL, ?, ?, now(), NULL, NULL, 1);";
         $sql = $connect->prepare($sql);
         $sql->bindValue(1,$prodName);
+        $sql->bindValue(2,$prodDesc);
         $sql->execute();
         return $result = $sql->fetchAll();
     }
 
-    public function updateProduct($prodID, $prodName){
+    public function updateProduct($prodID, $prodName, $prodDesc){
         $connect = parent::connection();
         parent::set_name();
         $sql = "UPDATE tm_product 
             SET
                 prod_name = ?,
+                prod_desc = ?,
                 date_upd = now()
             WHERE
                 prod_id = ?";
         $sql = $connect->prepare($sql);
         $sql->bindValue(1,$prodName);
-        $sql->bindValue(2,$prodID);
+        $sql->bindValue(2,$prodDesc);
+        $sql->bindValue(3,$prodID);
         $sql->execute();
         return $result = $sql->fetchAll();
     }

@@ -80,8 +80,8 @@ function editSaveProduct(e){
       $("#tableProducts").DataTable().ajax.reload();
 
       Swal.fire(
-        'Producto Creado',
-        'El producto se creó correctamente',
+        'Producto',
+        'El registro se guardo correctamente',
         'success'
       )
     }
@@ -89,7 +89,16 @@ function editSaveProduct(e){
 }
 
 function editProduct(prod_id){
-    console.log(prod_id)
+  $('#mdlTitulo').html('Editar Producto');
+
+  $.post("../../controller/product.php?op=showProduct",{prod_id:prod_id},function(data){
+    data = JSON.parse(data);
+    $('#prod_id').val(data.prod_id);
+    $('#prod_nom').val(data.prod_name);
+    $('#prod_desc').val(data.prod_desc);
+  });
+
+  $('#modalmaintenance').modal('show');
 }
 
 function deleteProduct(prod_id){
@@ -117,8 +126,10 @@ function deleteProduct(prod_id){
 }
 
 $(document).on("click","#btnNewProduct", function(){
-  $('#mdlTitulo').html('Nuevo Producto')
-  $('#modalmaintenance').modal('show')
+  $('#mdlTitulo').html('Nuevo Producto');
+  $("#productForm")[0].reset();
+  $('#prod_id').val('');
+  $('#modalmaintenance').modal('show');
 });
 
 init();

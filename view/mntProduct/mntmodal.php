@@ -19,10 +19,15 @@
                             placeholder="Ingrese Nombre" required>
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="prod_desc">Nombre</label>
+                        <textarea name="prod_desc" id="prod_desc" class="form-control" rows="4" id="comment"
+                            placeholder="Ingrese Descripción" required></textarea>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="action" id="#" value="add" class="btn btn-primary">Crear
-                        Producto</button>
+                    <button type="submit" name="action" id="#" value="add" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </form>
