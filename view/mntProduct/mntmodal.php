@@ -14,15 +14,27 @@
                     <input type="hidden" id="prod_id" name="prod_id">
 
                     <div class="form-group">
+                        <label class="form-label" for="cat_id">Categoria</label>
+                        <select class="form-control" name="cat_id" id="cat_id">
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="prod_nom">Nombre</label>
                         <input type="text" name="prod_nom" id="prod_nom" class="form-control"
                             placeholder="Ingrese Nombre" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="prod_desc">Nombre</label>
+                        <label class="form-label" for="prod_desc">Descripción</label>
                         <textarea name="prod_desc" id="prod_desc" class="form-control" rows="4" id="comment"
                             placeholder="Ingrese Descripción" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="prod_cant">Cantidad</label>
+                        <input type="number" name="prod_cant" id="prod_cant" class="form-control"
+                            placeholder="Ingrese Cantidad" required>
                     </div>
 
                 </div>

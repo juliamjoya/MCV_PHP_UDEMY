@@ -41,8 +41,10 @@
                                     <table class="table" id="tableProducts">
                                         <thead class="thead-primary text-center">
                                             <tr class="text-center">
+                                                <th scope="col">Categoria</th>
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Descripción</th>
+                                                <th scope="col">Cantidad</th>
                                                 <th scope="col"></th>
                                                 <th scope="col"></th>
                                                 <!-- <th scope="col">Handle</th> -->
